@@ -28,6 +28,8 @@
 
 ### 仮想マシンとの違い
 
+![サーバ仮想とコンテナ環境](https://news.mynavi.jp/article/zerocontena-2/images/002l.jpg)
+
 ---
 
 ### メリットとデメリット
