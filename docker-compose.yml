@@ -9,8 +9,8 @@ services:
       - db
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: hogehoge
       WORDPRESS_DB_NAME: wpwp
     # env_file: .env
 
@@ -19,9 +19,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       # MYSQL_RANDOM_ROOT_PASSWORD: true
-      # MYSQL_DATABASE: wordpress
-      # MYSQL_USER: wp_user
-      # MYSQL_PASSWORD: hogehoge
+      MYSQL_DATABASE: wpwp
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: hogehoge
     # env_file: .env
     # volumes:
     #     - db-data:/var/lib/mysql
