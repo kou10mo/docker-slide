@@ -25,6 +25,10 @@ services:
     # env_file: .env
     # volumes:
     #     - db-data:/var/lib/mysql
+    volumes:
+      - type: bind
+        source: ./static
+        target: /var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
