@@ -13,17 +13,8 @@ services:
       WORDPRESS_DB_PASSWORD: hogehoge
       WORDPRESS_DB_NAME: wpwp
     # env_file: .env
-    volumes:
-      - type: volume
-        source: test
-        target: /data2
-        volume:
-          nocopy: true
-      - type: volume
-        source: mydata
-        target: /data
-        volume:
-          nocopy: true
+    networks:
+      - db-network
 
   db:
     image: mysql:5.7
@@ -34,17 +25,14 @@ services:
       MYSQL_USER: wp_user
       MYSQL_PASSWORD: hogehoge
     # env_file: .env
-    # volumes:
-    #     - db-data:/var/lib/mysql
     volumes:
-      - type: bind
-        source: ./static
-        target: /var/lib/mysql
       - type: volume
-        source: test
-        target: /data3
+        source: db-data
+        target: /var/lib/mysql
         volume:
           nocopy: true
+    networks:
+      - db-network
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -54,9 +42,15 @@ services:
       - db
     environment:
       MYSQL_ROOT_PASSWORD: password
+    networks:
+      - db-network
 
 volumes:
-  mydata:
-  test:
+  db-data:
     external:
-      name: volume-test
+      name: db-wordpress
+
+networks:
+  db-network:
+    external:
+      name: db-wordpress
