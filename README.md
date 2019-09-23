@@ -24,3 +24,9 @@ docker-compose down --rmi all
 
 加えてイメージも削除するよ
 
+# ref.
+Dockerイメージの理解とコンテナのライフサイクル https://www.slideshare.net/zembutsu/docker-images-containers-and-lifecycle
+
+#
+
+https://gitpitch.com/kou10mo/docker-slide
