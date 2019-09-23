@@ -14,7 +14,7 @@ services:
       WORDPRESS_DB_NAME: wpwp
     # env_file: .env
     networks:
-      - db-network
+      - wordpress
 
   db:
     image: mysql:5.7
@@ -27,12 +27,12 @@ services:
     # env_file: .env
     volumes:
       - type: volume
-        source: db-data
+        source: db-wordpress
         target: /var/lib/mysql
         volume:
           nocopy: true
     networks:
-      - db-network
+      - wordpress
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -43,14 +43,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
     networks:
-      - db-network
+      - wordpress
 
 volumes:
-  db-data:
-    external:
-      name: db-wordpress
+  db-wordpress:
+    external: true
 
 networks:
-  db-network:
-    external:
-      name: db-wordpress
+  wordpress:
+    external: true
