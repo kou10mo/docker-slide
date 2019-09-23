@@ -24,6 +24,10 @@ docker-compose down --rmi all
 
 加えてイメージも削除するよ
 
+# down前にdBバックアップ
+
+docker exec -it docker-slide_db_1 sh -c 'mysqldump --all-databases -u root -ppassword 2> /dev/null > /var/lib/mysql/mysql.dump.sql'
+
 # ref.
 Dockerイメージの理解とコンテナのライフサイクル https://www.slideshare.net/zembutsu/docker-images-containers-and-lifecycle
 
